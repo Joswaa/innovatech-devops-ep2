@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovatech Chile | Tienda de Perritos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      color: #1f2937;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    p.subtitulo {
+      margin-bottom: 24px;
+      color: #6b7280;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    .acciones {
+      display: flex;
+      gap: 10px;
+    }
+
+    .estado {
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .estado.ok {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .estado.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .productos {
+      display: grid;
+      gap: 16px;
+    }
+
+    .producto {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .producto h3 {
+      margin-bottom: 8px;
+    }
+
+    .producto p {
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+    .producto .acciones {
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tienda de Perritos</h1>
+    <p class="subtitulo">Frontend Innovatech Chile consumiendo API REST del backend.</p>
+
+    <div id="estado" class="estado"></div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Formulario de producto</h2>
+        <form id="productoForm">
+          <input type="hidden" id="productoId" />
+
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Ej: Alimento Premium" required />
+
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" placeholder="Descripción del producto"></textarea>
+
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" placeholder="Ej: 15990" required />
+
+          <label for="stock">Stock</label>
+          <input type="number" id="stock" placeholder="Ej: 20" required />
+
+          <div class="acciones">
+            <button type="submit" class="btn-primary">Guardar</button>
+            <button type="button" id="btnCancelar" class="btn-secondary">Cancelar edición</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Listado de productos</h2>
+        <div id="productos" class="productos"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

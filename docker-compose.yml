@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+  db:
+  build:
+    context: ./db
+    dockerfile: Dockerfile
+  container_name: innovatech-db
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: admin_password_seguro
+    MYSQL_DATABASE: innovatech_db
+    MYSQL_USER: innovatech_user
+    MYSQL_PASSWORD: user_password_seguro
+  volumes:
+    - innovatech_data:/var/lib/mysql
+  networks:
+    - backend-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: innovatech-backend
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: innovatech_db
+      DB_USER: innovatech_user
+      DB_PASSWORD: user_password_seguro
+      PORT: 3001
+    depends_on:
+      - db
+    expose:
+      - "3001"
+    networks:
+      - backend-network
+      - frontend-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: innovatech-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:8080"
+    networks:
+      - frontend-network
+
+volumes:
+  innovatech_data:
+    name: innovatech_db_volume
+
+networks:
+  frontend-network:
+    driver: bridge
+  backend-network:
+    driver: bridge
