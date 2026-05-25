@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:alpine
+FROM nginx:alpine
 
 # Limpiar contenido por defecto
 RUN rm -rf /usr/share/nginx/html/*
