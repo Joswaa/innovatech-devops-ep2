@@ -1,6 +1,6 @@
 # InnovaTech Chile - EP2 DevOps
 
-Proyecto de Evaluación Parcial N°2 para la asignatura ISY1101 - Introducción a Herramientas DevOps.
+Proyecto - Introducción a Herramientas DevOps.
 
 ## Descripción
 La solución está dividida en tres capas:
