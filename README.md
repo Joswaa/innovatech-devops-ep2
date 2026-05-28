@@ -29,7 +29,7 @@ docker compose up --build
 ```
 
 ## Puertos
-- Frontend: 80
+- Frontend: 8080
 - Backend: 3001
 - MySQL: 3306
 
@@ -41,5 +41,5 @@ La base de datos usa un volumen Docker nombrado para conservar los datos.
 - Base de datos se despliega manualmente en su EC2 correspondiente
 
 ## Integrantes
-- Nombre 1
-- Nombre 2
+- Joshua Martinez
+- Felipe Fuenzalida
