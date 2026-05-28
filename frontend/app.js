@@ -138,7 +138,7 @@ async function eliminarProducto(id) {
       throw new Error(resultado.message || "Error al eliminar producto");
     }
 
-    mostrarEstado("Producto eliminado correctamente.");
+    mostrarEstado("Se ha eliminado por fin este producto inutil");
     await cargarProductos();
   } catch (error) {
     mostrarEstado(error.message, "error");
